@@ -1,0 +1,1 @@
+GREETINGS = ' Привет {}, Welcome to our bot shop'
