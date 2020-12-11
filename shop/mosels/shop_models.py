@@ -31,7 +31,7 @@ class Category(Time_stamp):
 
     @classmethod
     def get_root_categories(cls):
-        return cls.objects(parent__ne =None)
+        return cls.objects(parent =None)
 
 
     def is_root(self):
