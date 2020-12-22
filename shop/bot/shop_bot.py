@@ -1,15 +1,17 @@
 import json
-
+from flask import Flask,request,abort
+from telebot.types import Update
+import time
 from mongoengine import NotUniqueError
 from telebot import TeleBot
 from telebot.types import ReplyKeyboardMarkup,InlineKeyboardButton,InlineKeyboardMarkup,KeyboardButton,Message
-from ..mosels.shop_models import Category
-from ..mosels.shop_models import News
-from ..mosels.shop_models import User
-from ..mosels.shop_models import Product
-from.config import TOKEN
-from . import constants
-from .utils import inline_kb_from_iterable
+from shop.mosels.shop_models import Category
+from shop.mosels.shop_models import News
+from shop.mosels.shop_models import User
+from shop.mosels.shop_models import Product
+from shop.bot.config import TOKEN,WEBHOOK_URI,WEBHOOK_URL
+from shop.bot import constants
+from shop.bot.utils import inline_kb_from_iterable
 bot = TeleBot(TOKEN)
 
 
@@ -104,8 +106,7 @@ def handle_settings(message):
     user = User.objects.get(telegram_id=message.chat.id)
     data = user.formatted_data()
     kb = InlineKeyboardMarkup()
-    buttons=
-    kb = inline_kb_from_iterable(constants.SETTINGS_TAG, updateble_settings)
+    kb = inline_kb_from_iterable(constants.SETTINGS_TAG)
     bot.send_message(
         user.telegram_id,
        data,
@@ -138,10 +139,16 @@ def handle_product_add_to_cart(call):
         'Продукт добавлен в корзину'
     )
 
+app= Flask(__name__)
 
-
-
-
+@app.route(WEBHOOK_URI,methods=['POST'])
+def handle_webhook():
+  if  request.headers.get('content-type') == 'aplication/json':
+        json_string = request.get_data()
+        update = Update.de_json(json_string)
+        bot.process_new_updates([update])
+        return ''
+  abort(403)
 
 
 
