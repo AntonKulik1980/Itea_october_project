@@ -1,5 +1,5 @@
 GREETINGS = ' Привет {}. Welcome to our bot shop'
-
+ADD_TO_CARD = 'Добавить в корзину'
 
 CATEGORIES = 1
 CART = 2
@@ -16,3 +16,5 @@ START_KB = {
 }
 
 CATEGORY_TAG = '1'
+PRODUCT_TAG = '2'
+SETTINGS_TAG ='3'
