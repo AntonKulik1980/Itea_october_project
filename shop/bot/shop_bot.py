@@ -13,6 +13,7 @@ from shop.bot.config import TOKEN,WEBHOOK_URI,WEBHOOK_URL
 from shop.bot import constants
 from shop.bot.utils import inline_kb_from_iterable
 bot = TeleBot(TOKEN)
+app = Flask(__name__)
 
 
 @bot.message_handler(commands=['start'])
@@ -139,16 +140,16 @@ def handle_product_add_to_cart(call):
         'Продукт добавлен в корзину'
     )
 
-app= Flask(__name__)
 
-@app.route(WEBHOOK_URI,methods=['POST'])
+
+@app.route(WEBHOOK_URI, methods=['POST'])
 def handle_webhook():
-  if  request.headers.get('content-type') == 'aplication/json':
+    if request.headers.get('content-type') == 'application/json':
         json_string = request.get_data().decode('utf-8')
         update = Update.de_json(json_string)
         bot.process_new_updates([update])
         return ''
-  abort(403)
+    abort(403)
 
 
 
