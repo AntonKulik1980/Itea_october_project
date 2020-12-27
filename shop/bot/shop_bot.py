@@ -13,6 +13,7 @@ from shop.bot.config import TOKEN,WEBHOOK_URI,WEBHOOK_URL
 from shop.bot import constants
 from shop.bot.utils import inline_kb_from_iterable
 bot = TeleBot(TOKEN)
+
 app = Flask(__name__)
 
 
