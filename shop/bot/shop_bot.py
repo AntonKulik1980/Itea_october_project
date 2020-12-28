@@ -102,13 +102,14 @@ def handle_category(call):
 def handle_settings(message):
     user = User.objects.get(telegram_id=message.chat.id)
     data = user.formatted_data()
-    # settings= getattr(user,'telegram_id')
-    # kb = InlineKeyboardMarkup()
-    # button = inline_kb_from_iterable(constants.SETTINGS_TAG,settings)
-    # kb.add(button)
+    settings= user.objects()
+    kb = InlineKeyboardMarkup()
+    button = inline_kb_from_iterable(constants.SETTINGS_TAG,settings)
+    kb.add(button)
     bot.send_message(
         user.telegram_id,
-        data)
+        data,
+        reply_markup=kb)
 
 
 @bot.callback_query_handler(lambda c: json.loads(c.data)['tag'] == constants.PRODUCT_TAG)
