@@ -109,11 +109,12 @@ def handle_settings(message):
     data = user.formatted_data()
     settings= User.get_updateble_settings()
     kb = InlineKeyboardMarkup()
-    kb = inline_kb_from_iterable(constants.SETTINGS_TAG,settings)
+    button = inline_kb_from_iterable(constants.SETTINGS_TAG,settings)
+    kb.add(button)
     bot.send_message(
         user.telegram_id,
        data,
-       )
+       reply_markup=kb)
 
 
 
