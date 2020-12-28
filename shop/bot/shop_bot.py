@@ -107,14 +107,14 @@ def handle_category(call):
 def handle_settings(message):
     user = User.objects.get(telegram_id=message.chat.id)
     data = user.formatted_data()
-    settings= User.get_updateble_settings()
+    settings= user.get_updateble_settings()
     kb = InlineKeyboardMarkup()
     button = inline_kb_from_iterable(constants.SETTINGS_TAG,settings)
     kb.add(button)
     bot.send_message(
-        user.telegram_id,
-       data,
-       reply_markup=kb)
+    user.telegram_id,
+    data,
+    reply_markup=kb)
 
 
 
