@@ -28,7 +28,7 @@ def handle_start(message):
         first_name=getattr(message.from_user, 'first_name',None)
         )
     except NotUniqueError:
-        greetings = 'Welcome back'
+        greetings = f'Welcome back{message.from_user.first_name}'
     else:
         name = f', {message.from_user.first_name}' if getattr(message.from_user, 'first_name') else ''
         greetings = constants.GREETINGS.format(name)
