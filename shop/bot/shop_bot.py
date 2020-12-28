@@ -113,7 +113,7 @@ def handle_settings(message):
     bot.send_message(
         user.telegram_id,
        data,
-       reply_markup=kb)
+       )
 
 
 
