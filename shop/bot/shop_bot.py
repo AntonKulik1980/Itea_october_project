@@ -116,14 +116,6 @@ def handle_settings(message):
 
 
 
-    root_categories = Category.get_root_categories()
-
-    bot.send_message(
-        message.chat.id,
-        'Выберите категорию',
-        reply_markup=kb
-    )
-
 
 
 
