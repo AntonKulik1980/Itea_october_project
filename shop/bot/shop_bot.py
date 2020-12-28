@@ -47,7 +47,7 @@ def handle_categories(message:Message):
     kb = inline_kb_from_iterable(constants.CATEGORY_TAG,root_categories)
     bot.send_message(
         message.chat.id,
-        'Выберите категорию',
+        'Выберите категорию!',
         reply_markup=kb
     )
 
