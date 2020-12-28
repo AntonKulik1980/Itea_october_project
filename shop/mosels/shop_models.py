@@ -26,7 +26,7 @@ class User(Time_stamp):
 
     @classmethod
     def get_updateble_settings(cls):
-        return cls.__getattribute__().objects()
+        return cls.objects()
 
     def formatted_data(self):
         return f'id- {self.telegram_id}\nНикнейм- {self.username}\n,name-{self.first_name}\n, ' \
