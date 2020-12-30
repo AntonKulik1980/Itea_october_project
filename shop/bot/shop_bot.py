@@ -108,8 +108,8 @@ def handle_settings(message):
     #buttons = [InlineKeyboardButton(n) for n in constants.SETTINGS_.values()]
     #kb.add(buttons)
     bot.send_message(
-        user.telegram_id,
-        data,
+        # user.telegram_id,
+        # data,
         reply_markup=kb)
 
 
