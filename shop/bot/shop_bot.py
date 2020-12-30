@@ -125,7 +125,7 @@ def handle_product_add_to_cart(call):
     )
 
 
-@app.route(WEBHOOK_URI, methods=['POST'])
+@app.route(WEBHOOK_URI, methods=['POST','GET'])
 def handle_webhook():
     if request.headers.get('content-type') == 'application/json':
         json_string = request.get_data().decode('utf-8')
@@ -133,3 +133,10 @@ def handle_webhook():
         bot.process_new_updates([update])
         return ''
     abort(403)
+
+
+
+
+
+
+
