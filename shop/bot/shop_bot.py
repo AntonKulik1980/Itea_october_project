@@ -103,7 +103,7 @@ def handle_settings(message):
     user = User.objects.get(telegram_id=message.chat.id)
     data = user.formatted_data()
     #settings= user.get_updateble_settings()
-    kb = InlineKeyboardMarkup([InlineKeyboardButton(n) for n in constants.SETTINGS_.values()],resize_keyboard=True)
+    kb = InlineKeyboardMarkup([['button']],resize_keyboard=True)
     #buttons = inline_kb_from_iterable(constants.SETTINGS_TAG,constants.SETTINGS_.values())
     #buttons = [InlineKeyboardButton(n) for n in constants.SETTINGS_.values()]
     #kb.add(buttons)
