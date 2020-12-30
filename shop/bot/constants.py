@@ -20,4 +20,7 @@ PRODUCT_TAG = '2'
 SETTINGS_TAG ='3'
 
 
-
+SETTINGS_ = {
+    NAME: 'Имя',
+    ADRESS: 'Адресс'
+}
