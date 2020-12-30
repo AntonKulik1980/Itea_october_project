@@ -6,7 +6,8 @@ CART = 2
 SETTINGS = 3
 NEWS = 4
 PRODUCTS_WITH_DISCOUNT =5
-
+NAME =6
+ADRESS =7
 START_KB = {
     CATEGORIES: 'Категории',
     CART: 'Корзина',
